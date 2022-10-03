@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Mundo con Flask</title>
+</head>
+<body>
+    {% if user_ip %}
+        <h1>Hola mundo, tu IP es {{ user_ip }}</h1>
+    {% else %}
+        <a href="{{ url_for('index') }}"><- Ir al Inicio</a>
+    {% endif %}
+
+    <ul>
+        {% for toDo in toDos %}
+            <li>{{ toDo }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
