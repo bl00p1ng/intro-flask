@@ -6,3 +6,8 @@ body {
     width: 50px;
     height: auto;
 }
+
+.image--error {
+    width: 80%;
+    max-width: 800px;
+}

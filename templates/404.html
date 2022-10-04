@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ super() }}
+    Error 404
+{% endblock %}
+
+{% block content %}
+    <h1>
+        Lo sentimos, no encotramos lo que buscabas
+    </h1>
+    <img
+        src="{{ url_for('static', filename='images/error-404.png') }}"
+        alt="Error 404"
+        class="image--error"
+    />
+    <p>
+        Revisa que el enlace este escrito correctamente
+    </p>
+    <p>
+        <b>
+            Detalle del error: 
+        </b>
+        {{ error }}
+    </p>
+{% endblock %}
