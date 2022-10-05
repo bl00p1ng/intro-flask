@@ -1,9 +1,10 @@
 from urllib import response
-from flask import Flask, request, make_response, redirect, render_template
+from flask import Flask, request, make_response, redirect, render_template, session
 from flask_bootstrap import Bootstrap5
 
 app = Flask(__name__)
 bootstrap = Bootstrap5(app)
+app.config['SECRET_KEY'] = 'secret value'
 
 # Lista de tareas
 toDos = ['Estudiar Python', 'Estudiar JavaScript', 'Estudiar Inglés']
@@ -15,16 +16,16 @@ def index():
     user_ip = request.remote_addr
     # Redirigir a /hello
     response = make_response(redirect('/hello'))
-    # Guardar IP en una cookie
-    response.set_cookie('user_ip', user_ip)
+    # Guardar IP en session
+    session['user_ip'] = user_ip
 
     return response
 
 
 @app.route('/hello')
 def hello():
-    # Obtener la IP del usuario desde una cookie
-    user_ip = request.cookies.get('user_ip')
+    # Obtener la IP del usuario desde session
+    user_ip = session.get('user_ip')
 
     context = {
         "user_ip": user_ip,
