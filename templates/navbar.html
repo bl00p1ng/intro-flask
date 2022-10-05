@@ -1,15 +1,13 @@
-<nav>
-    <img 
-        class="logo"
-        src="{{ url_for('static', filename='images/to-do-list.png') }}"
-        alt="Logotipo"
-    />
-    <ul>
-        <li>
-            <a href="{{ url_for('index') }}">Inicio</a>
-        </li>
-        <li>
-            <a href="https://platzi.com" target="_blank">ir a Platzi</a>
-        </li>
-    </ul>
+{% from 'bootstrap5/nav.html' import render_nav_item %}
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="navbar-nav mr-auto">
+        <img 
+            class="logo"
+            src="{{ url_for('static', filename='images/to-do-list.png') }}"
+            alt="Logotipo"
+        />
+        {{ render_nav_item('index', 'Inicio') }}
+        {{ render_nav_item('platzi', 'Ir a Platzi') }}
+    </div>
 </nav>

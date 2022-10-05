@@ -1,6 +1,9 @@
+from urllib import response
 from flask import Flask, request, make_response, redirect, render_template
+from flask_bootstrap import Bootstrap5
 
 app = Flask(__name__)
+bootstrap = Bootstrap5(app)
 
 # Lista de tareas
 toDos = ['Estudiar Python', 'Estudiar JavaScript', 'Estudiar Inglés']
@@ -29,6 +32,15 @@ def hello():
     }
     # Mostrar template con la IP del usuario
     return render_template('hello.html', **context)
+
+
+@app.route('/platzi')
+def platzi():
+    # Redirigir a Platzi.com
+    response = make_response(redirect('https://platzi.com'))
+
+    return response
+
 
 @app.errorhandler(404)
 def not_found(error):
